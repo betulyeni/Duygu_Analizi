@@ -5,7 +5,6 @@ file = open('kategoriler.txt', 'r')
 lines = file.readlines()
 file.close()
 
-print(lines)
 for i in lines:
     response = requests.get(i)
     template = BeautifulSoup(response.content, 'html.parser')

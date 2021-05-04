@@ -3,11 +3,12 @@ from bs4 import BeautifulSoup
 
 kategoriler = open("kategoriler.txt", 'r')
 
-lines = kategoriler.readlines()
+lines = kategoriler.readlines() # satırları bir dizi haline getirir
 
+print(lines)
 for i in lines:
     response = requests.get(i.replace('\n', ''))
-    if response.status_code == 200:
+    if response.status_code == 200: # response code
         template = BeautifulSoup(response.content, 'html.parser')
 
         product_card = template.find('div', class_="prdct-cntnr-wrppr")
@@ -15,7 +16,8 @@ for i in lines:
         with open('products.txt', 'a') as file:
             for i in product_card.find_all('a', href=True):
                 url = str(i["href"])
-                url = url[:url.index('?')]
+                if '?' in url:
+                    url = url[:url.index('?')]
                 file.write(url + "\n")
 
     else:

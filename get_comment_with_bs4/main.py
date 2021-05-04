@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 
-# C:\VTRoot\HarddiskVolume3\Users\testinium\Desktop\tez\
-
 response = requests.get("https://www.trendyol.com/")
 
 template = BeautifulSoup(response.content, 'html.parser')

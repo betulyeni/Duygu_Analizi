@@ -14,7 +14,7 @@ for i in lines:
         template = BeautifulSoup(response.content, 'html.parser')
 
         command = template.find_all('div', class_="rnr-com-tx")
-        with open('commands.csv', 'a', encoding="utf-8", newline='') as file:
+        with open('comments.csv', 'a', encoding="utf-8", newline='') as file:
             fieldnames = ['command']
             writer = csv.writer(file)
             writer.writerow(fieldnames)
